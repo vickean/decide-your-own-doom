@@ -14,6 +14,16 @@
       "git save": "allow",
       "git *": "ask",
       "*": "ask"
+    },
+    "webfetch": "ask",
+    "question": "allow"
+  },
+  "agent": {
+    "visual-helper": {
+      "description": "Describes images to text only models",
+      "mode": "subagent",
+      "model": "openrouter/mistralai/mistral-small-3.2-24b-instruct",
+      "prompt": "You are the eyes for an LLM that is text only. Describe what you see in detail."
     }
   }
 }

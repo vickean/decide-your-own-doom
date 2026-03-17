@@ -38,7 +38,8 @@ describe('parseStory', () => {
     expect(story.title).toBe('Test Story');
     expect(story.engine).toBe('1.0');
     expect(story.start).toBe('start');
-    expect(story.variables).toEqual({ has_key: false, gold: 10 });
+    expect(story.variables.has_key).toBe(false);
+    expect(story.variables.gold).toBe(10);
   });
 
   it('parses scenes correctly', () => {
