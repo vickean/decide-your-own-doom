@@ -1,11 +1,22 @@
 #!/bin/bash
 
-# Ensure we are in a git repository
+# Store original directory
+ORIG_DIR="$(pwd)"
+
+# Move up to find git repo root
+while [ ! -d .git ] && [ "$(pwd)" != / ]; do
+    cd ..
+done
+
+# Check if we found a git repo
 if [ ! -d .git ]; then
-    echo "Error: This script must be run from the root of a Git repository."
+    echo "Error: No git repository found"
+    cd "$ORIG_DIR" 2>/dev/null
     exit 1
 fi
 
+GIT_ROOT="$(pwd)"
+echo "Found git repository at: $GIT_ROOT"
 echo "Setting up safety aliases for OpenCode..."
 
 # 1. 'sync' - Pulls with rebase and auto-stashes local changes to prevent merge commits
@@ -26,3 +37,6 @@ git config --local alias.save "commit -am"
 echo "--------------------------------------------------"
 echo "Success! The following aliases are now active for this project:"
 git config --get-regexp '^alias\.'
+
+# Return to original directory
+cd "$ORIG_DIR"
