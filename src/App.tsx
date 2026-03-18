@@ -191,14 +191,6 @@ function App() {
         <h1>{story.title}</h1>
       </header>
 
-      {validationResult && validationResult.warnings.length > 0 && (
-        <div className="warnings">
-          {validationResult.warnings.map((w, i) => (
-            <p key={i} className="warning">Warning: {w}</p>
-          ))}
-        </div>
-      )}
-
       <main>
         {battleState?.active && story && (
           <>
@@ -236,12 +228,19 @@ function App() {
       </main>
 
       <footer>
-        <div className="debug-info">
+        <div className="debug-info" style={{ wordWrap: 'break-word', overflowWrap: 'break-word' }}>
           <h3>Game State</h3>
           <p>Scene: {gameState.currentScene}</p>
-          <p>Variables: {JSON.stringify(gameState.variables)}</p>
-          <p>Inventory: {JSON.stringify(gameState.inventory)}</p>
+          <p>Variables: {JSON.stringify(gameState.variables, null, 2)}</p>
+          <p>Inventory: {JSON.stringify(gameState.inventory, null, 2)}</p>
         </div>
+        {validationResult && validationResult.warnings.length > 0 && (
+          <div className="warnings">
+            {validationResult.warnings.map((w, i) => (
+              <p key={i} className="warning">Warning: {w}</p>
+            ))}
+          </div>
+        )}
         <div className="controls">
           <button onClick={goBack} disabled={gameState.history.length === 0 || battleState?.active}>
             Go Back

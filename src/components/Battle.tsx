@@ -43,12 +43,6 @@ export function Battle({ story, battleState, variables: initialVariables, onBatt
     setCurrentBattle(result.battleState);
     setCurrentVariables(result.newVariables);
     
-    if (!result.battleState.active && result.battleState.result) {
-      setTimeout(() => {
-        onBattleEnd(result.battleState.result!, result.newVariables);
-      }, 1500);
-    }
-    
     setIsActing(false);
   };
   
@@ -67,8 +61,8 @@ export function Battle({ story, battleState, variables: initialVariables, onBatt
   if (!currentBattle.active && currentBattle.result) {
     return (
       <Card className="mb-4 border-4 border-yellow-500 bg-slate-900">
-        <CardContent className="py-12 text-center">
-          <div className="text-6xl mb-4">
+        <CardContent className="text-center" style={{ paddingTop: '96px', paddingBottom: '96px', paddingLeft: '32px', paddingRight: '32px' }}>
+          <div className="text-6xl mb-6" style={{ marginBottom: '24px' }}>
             {currentBattle.result === 'victory' && '🎉'}
             {currentBattle.result === 'defeat' && '💀'}
             {currentBattle.result === 'escape' && '🏃'}
@@ -77,7 +71,13 @@ export function Battle({ story, battleState, variables: initialVariables, onBatt
             {currentBattle.result === 'victory' ? 'VICTORY' : currentBattle.result === 'defeat' ? 'DEFEAT' : 'ESCAPED'}
           </h2>
           <p className="text-2xl text-slate-300">{resultMessages[currentBattle.result]}</p>
-          <p className="text-lg text-slate-500 mt-4">Loading next scene...</p>
+          <Button
+            onClick={() => onBattleEnd(currentBattle.result!, currentVariables)}
+            className="mt-6 text-xl font-bold bg-yellow-500 hover:bg-yellow-600 text-black"
+            style={{ paddingLeft: '48px', paddingRight: '48px', paddingTop: '16px', paddingBottom: '16px' }}
+          >
+            Continue
+          </Button>
         </CardContent>
       </Card>
     );
@@ -135,7 +135,7 @@ export function Battle({ story, battleState, variables: initialVariables, onBatt
             bottom: '22%', 
             right: '4%', 
             padding: '16px',
-            marginBottom: '30px'
+            marginBottom: '50px'
           }}
         >
           <div className="flex items-center gap-2 mb-2">

@@ -11,6 +11,7 @@ This folder contains reusable OpenCode configuration and documentation that can 
 | `TIPS.md` | Debug tips for React/frontend development |
 | `setup-git-safety.sh` | Script to configure git aliases for safe git operations |
 | `copy-to-root.sh` | Script to copy config files to project root |
+| `capture.ts` | Playwright script to capture screenshots for visual-helper |
 
 ## Quick Setup for New Projects
 
@@ -59,6 +60,28 @@ The `setup-git-safety.sh` script configures these aliases:
 | `git amend` | `commit --amend --no-edit` | Quick commit fix |
 | `git nuke-check` | `clean -nd` | Preview cleanup |
 | `git save` | `commit -am` | Quick save |
+
+## Screenshot Workflow for Visual-Helper
+
+Use the `capture.ts` script to take screenshots, then feed them to visual-helper:
+
+```bash
+# Start dev server
+npm run dev
+
+# Capture a screenshot (saves to /tmp/battle.png)
+npx tsx .opencode/capture.ts battle
+```
+
+Then call visual-helper with the screenshot path:
+
+```typescript
+task({
+  description: "Analyze battle UI",
+  prompt: "Look at /tmp/battle.png and identify any padding/margin issues.",
+  subagent_type: "visual-helper"
+})
+```
 
 ## Making Updates
 

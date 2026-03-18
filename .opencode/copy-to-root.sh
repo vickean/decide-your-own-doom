@@ -7,13 +7,23 @@ OPENCODE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 echo "Copying OpenCode config files to project root..."
 
-# Copy files (excluding this script and README)
+# Ensure scripts directory exists
+mkdir -p scripts
+
+# Copy files (excluding scripts, README, and this script itself)
 for file in "$OPENCODE_DIR"/*; do
   filename=$(basename "$file")
   
   # Skip scripts, README, and this script itself
   if [[ "$filename" == "setup-git-safety.sh" ]] || [[ "$filename" == "README.md" ]] || [[ "$filename" == "copy-to-root.sh" ]]; then
     echo "  Skipping: $filename"
+    continue
+  fi
+  
+  # Put capture.ts in scripts/ folder
+  if [[ "$filename" == "capture.ts" ]]; then
+    echo "  Copying: $filename -> scripts/"
+    cp "$file" "./scripts/$filename"
     continue
   fi
   
