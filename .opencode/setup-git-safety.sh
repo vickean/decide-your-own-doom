@@ -3,7 +3,12 @@
 # Store original directory
 ORIG_DIR="$(pwd)"
 
-# Move up to find git repo root
+# If we're in a .opencode folder, move up first
+if [[ "$(basename "$(pwd)")" == ".opencode" ]]; then
+    cd ..
+fi
+
+# Move up to find git repo root (but not if we're already in .opencode which might be a repo itself)
 while [ ! -d .git ] && [ "$(pwd)" != / ]; do
     cd ..
 done
@@ -11,6 +16,13 @@ done
 # Check if we found a git repo
 if [ ! -d .git ]; then
     echo "Error: No git repository found"
+    cd "$ORIG_DIR" 2>/dev/null
+    exit 1
+fi
+
+# Check if we're inside .opencode folder (don't run in that case)
+if [[ "$(pwd)" == *".opencode"* ]]; then
+    echo "Error: This script should be run from the project root, not inside .opencode/"
     cd "$ORIG_DIR" 2>/dev/null
     exit 1
 fi
