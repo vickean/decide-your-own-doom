@@ -10,17 +10,21 @@ This folder contains reusable OpenCode configuration and documentation that can 
 | `INSTRUCTIONS.md` | Agent behavioral guidelines (git workflow, safety constraints) |
 | `TIPS.md` | Debug tips for React/frontend development |
 | `setup-git-safety.sh` | Script to configure git aliases for safe git operations |
+| `copy-to-root.sh` | Script to copy config files to project root |
 
 ## Quick Setup for New Projects
 
-### Option 1: Copy the folder
+### Option 1: Copy the folder + run copy script
 ```bash
 # Copy to new project
 cp -r /path/to/.opencode /your/new/project/
 
-# Run the git safety setup script
+# Run the copy script (copies config files to root, skips scripts/README)
 cd /your/new/project
-./.opencode/setup-git-safety.sh
+./.opencode/copy-to-root.sh
+
+# Run the git safety setup script
+./setup-git-safety.sh
 ```
 
 ### Option 2: Git clone into subdirectory
@@ -28,15 +32,20 @@ cd /your/new/project
 # Clone into .opencode directory
 git clone https://github.com/yourusername/opencode-config.git /your/new/project/.opencode
 
-# Run git safety setup
+# Copy config files to root
 cd /your/new/project
-./.opencode/setup-git-safety.sh
+./.opencode/copy-to-root.sh
+
+# Run git safety setup
+./setup-git-safety.sh
 ```
 
 ### Option 3: Symlink (if using dotfiles repo)
 ```bash
 # If you have a dotfiles repo
 ln -s ~/dotfiles/opencode/.opencode /your/new/project/.opencode
+cd /your/new/project
+./.opencode/copy-to-root.sh
 ```
 
 ## Git Safety Aliases
