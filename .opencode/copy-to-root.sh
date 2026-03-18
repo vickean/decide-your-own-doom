@@ -24,6 +24,8 @@ done
 echo ""
 echo "Done! Files copied to project root."
 echo ""
+echo "OpenCode config version: $(cat "$OPENCODE_DIR/VERSION")"
+echo ""
 echo "Next steps:"
 echo "  1. Run: ./setup-git-safety.sh  (to configure git aliases)"
 echo "  2. Review the copied files as needed"
