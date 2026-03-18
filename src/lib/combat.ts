@@ -253,13 +253,13 @@ export function getCombatStats(
   const stats = story.combatStats;
   
   return {
-    health: stats?.health ? (variables[stats.health] as number) || 100 : (variables.health as number) || 100,
-    maxHealth: stats?.maxHealth ? (variables[stats.maxHealth] as number) || 100 : (variables.max_health as number) || 100,
-    mana: stats?.mana ? (variables[stats.mana] as number) || 50 : (variables.mana as number) || 50,
-    maxMana: stats?.maxMana ? (variables[stats.maxMana] as number) || 50 : (variables.max_mana as number) || 50,
-    attack: stats?.attack ? (variables[stats.attack] as number) || 10 : (variables.attack as number) || 10,
-    magic: stats?.magic ? (variables[stats.magic] as number) || 10 : (variables.magic as number) || 10,
-    defense: stats?.defense ? (variables[stats.defense] as number) || 5 : (variables.defense as number) || 5,
-    magicDefense: stats?.magicDefense ? (variables[stats.magicDefense] as number) || 0 : (variables.magic_defense as number) || 0,
+    health: stats?.health ? (variables[stats.health] as number) ?? 100 : (variables.health as number) ?? 100,
+    maxHealth: stats?.maxHealth ? (variables[stats.maxHealth] as number) ?? 100 : (variables.max_health as number) ?? 100,
+    mana: stats?.mana ? (variables[stats.mana] as number) ?? 50 : (variables.mana as number) ?? 50,
+    maxMana: stats?.maxMana ? (variables[stats.maxMana] as number) ?? 50 : (variables.max_mana as number) ?? 50,
+    attack: stats?.attack ? (variables[stats.attack] as number) ?? 10 : (variables.attack as number) ?? 10,
+    magic: stats?.magic ? (variables[stats.magic] as number) ?? 10 : (variables.magic as number) ?? 10,
+    defense: stats?.defense ? (variables[stats.defense] as number) ?? 5 : (variables.defense as number) ?? 5,
+    magicDefense: stats?.magicDefense ? (variables[stats.magicDefense] as number) ?? 0 : (variables.magic_defense as number) ?? 0,
   };
 }

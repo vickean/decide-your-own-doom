@@ -173,21 +173,23 @@ export function Battle({ story, battleState, variables: initialVariables, onBatt
             </p>
           </div>
           {/* Action Menu - Right (2x2 grid) */}
-          <div className="w-[45%] p-2 grid grid-cols-2 gap-2" role="group" aria-label="Action Buttons">
+          <div className="grid grid-cols-2 gap-4" role="group" aria-label="Action Buttons" style={{ padding: '24px', height: '100%' }}>
             <Button 
               onClick={() => handleAction('attack')}
               disabled={isActing || currentBattle.turn !== 'player'}
               variant="destructive"
-              className="h-full text-sm font-bold"
+              className="text-base font-bold"
               aria-label="Attack"
+              style={{ paddingLeft: '24px', paddingRight: '24px', paddingTop: '16px', paddingBottom: '16px' }}
             >
               🗡️ ATTACK
             </Button>
             <Button 
               onClick={() => handleAction('magic')}
               disabled={isActing || currentBattle.turn !== 'player' || combatStats.mana < 10}
-              className="h-full text-sm font-bold bg-blue-600 hover:bg-blue-700"
+              className="text-base font-bold bg-blue-600 hover:bg-blue-700"
               aria-label="Magic (costs 10 MP)"
+              style={{ paddingLeft: '24px', paddingRight: '24px', paddingTop: '16px', paddingBottom: '16px' }}
             >
               ✨ MAGIC
             </Button>
@@ -195,8 +197,9 @@ export function Battle({ story, battleState, variables: initialVariables, onBatt
               onClick={() => handleAction('defend')}
               disabled={isActing || currentBattle.turn !== 'player'}
               variant="secondary"
-              className="h-full text-sm font-bold"
+              className="text-base font-bold"
               aria-label="Defend"
+              style={{ paddingLeft: '24px', paddingRight: '24px', paddingTop: '16px', paddingBottom: '16px' }}
             >
               🛡️ DEFEND
             </Button>
@@ -204,8 +207,9 @@ export function Battle({ story, battleState, variables: initialVariables, onBatt
               onClick={() => handleAction('flee')}
               disabled={isActing || currentBattle.turn !== 'player'}
               variant="outline"
-              className="h-full text-sm font-bold border-slate-500 text-slate-300 hover:bg-slate-700"
+              className="text-base font-bold border-slate-500 text-slate-300 hover:bg-slate-700"
               aria-label="Flee"
+              style={{ paddingLeft: '24px', paddingRight: '24px', paddingTop: '16px', paddingBottom: '16px' }}
             >
               🏃 FLEE
             </Button>

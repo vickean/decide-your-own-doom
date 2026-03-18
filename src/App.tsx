@@ -35,6 +35,11 @@ function App() {
 
     if (battleState?.active) return;
 
+    if (target === story.start) {
+      restart();
+      return;
+    }
+
     if (requires) {
       for (const req of requires) {
         const hasItem = gameState.inventory.includes(req);
