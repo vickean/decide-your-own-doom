@@ -11,8 +11,8 @@ echo "Copying OpenCode config files to project root..."
 for file in "$OPENCODE_DIR"/*; do
   filename=$(basename "$file")
   
-  # Skip this script and README
-  if [[ "$filename" == "setup-git-safety.sh" ]] || [[ "$filename" == "README.md" ]]; then
+  # Skip scripts, README, and this script itself
+  if [[ "$filename" == "setup-git-safety.sh" ]] || [[ "$filename" == "README.md" ]] || [[ "$filename" == "copy-to-root.sh" ]]; then
     echo "  Skipping: $filename"
     continue
   fi
