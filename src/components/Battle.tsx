@@ -106,7 +106,7 @@ export function Battle({ story, battleState, variables: initialVariables, onBatt
           }}
         >
           <div className="flex items-center gap-2 mb-2">
-            <span className="text-base font-bold text-slate-200" aria-label="Enemy Name">{enemy.name}</span>
+            <span className="text-base font-bold text-slate-200 uppercase" aria-label="Enemy Name">{enemy.name}</span>
             <span className="text-sm text-slate-400" aria-label="Enemy Level">Lv.{enemy.damage * 2}</span>
           </div>
           <div className="text-sm text-slate-400 mb-1" aria-hidden="true">HP</div>

@@ -4,7 +4,7 @@ import { parseStory, validateStory, renderSceneContent, extractSetCommands, appl
 import { startBattle } from './lib/combat';
 import ReactMarkdown from 'react-markdown';
 import { Battle } from './components/Battle';
-import storyContent from './stories/goblin-cave.md?raw';
+import storyContent from './stories/dragons-peak.md?raw';
 
 function App() {
   const [story, setStory] = useState<Story | null>(null);
